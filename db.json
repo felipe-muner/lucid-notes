@@ -1,0 +1,52 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "title": "Meeting Notes - Q1 Planning",
+      "content": "Discussed project roadmap for Q1. Key priorities include:\n\n- Launching the new feature set by end of February\n- Improving user onboarding flow with better tutorials\n- Expanding the analytics dashboard with more metrics\n- Conducting user research sessions bi-weekly\n\nAction items:\n- Schedule follow-up meetings with design team\n- Create detailed timeline for feature releases\n- Set up user testing sessions\n- Review competitor analysis",
+      "tags": ["work", "meetings", "planning", "q1"],
+      "createdAt": "2025-01-05T10:30:00Z",
+      "updatedAt": "2025-01-05T15:45:00Z"
+    },
+    {
+      "id": "2",
+      "title": "Recipe Collection",
+      "content": "New recipes to try this week:\n\n🍛 **Thai Green Curry** (Monday)\n- Coconut milk, green curry paste, chicken\n- Serve with jasmine rice\n- Prep time: 30 mins\n\n🍝 **Mushroom Pasta** (Wednesday)\n- Mixed mushrooms, cream, garlic\n- Use fresh pappardelle if available\n- Add fresh herbs at the end\n\n🍪 **Chocolate Chip Cookies** (Weekend)\n- Brown butter for extra flavor\n- Sea salt flakes on top\n- Chill dough for 24 hours\n\nGrocery list: coconut milk, green curry paste, mixed mushrooms, fresh pasta, chocolate chips",
+      "tags": ["personal", "cooking", "recipes", "meal-planning"],
+      "createdAt": "2025-01-03T14:20:00Z",
+      "updatedAt": "2025-01-06T09:15:00Z"
+    },
+    {
+      "id": "3",
+      "title": "Learning Goals 2025",
+      "content": "Technical skills to focus on this year:\n\n**Frontend Development:**\n- Master Next.js 15 app router\n- Deep dive into React Server Components\n- Learn advanced TypeScript patterns\n- Explore Web Assembly for performance\n\n**AI Integration:**\n- OpenAI API best practices\n- Vector databases and embeddings\n- Prompt engineering techniques\n- Building AI-powered user interfaces\n\n**DevOps & Performance:**\n- Advanced Vercel deployment strategies\n- Performance monitoring and optimization\n- CI/CD pipeline improvements\n- Docker containerization\n\nMonthly review schedule: First Monday of each month",
+      "tags": ["learning", "goals", "development", "ai", "career"],
+      "createdAt": "2025-01-01T08:00:00Z",
+      "updatedAt": "2025-01-07T16:30:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Project Ideas Backlog",
+      "content": "Side projects to build when I have time:\n\n**High Priority:**\n- Personal finance tracker with AI insights\n- Automated social media content scheduler\n- Smart home dashboard with IoT integration\n\n**Medium Priority:**\n- Language learning app with spaced repetition\n- Habit tracker with gamification\n- Recipe recommendation engine\n\n**Fun Ideas:**\n- Retro game collection organizer\n- Plant care reminder app\n- Local event discovery platform\n\nTime estimate: 2-3 weekends per project for MVP",
+      "tags": ["projects", "ideas", "side-hustle", "development"],
+      "createdAt": "2024-12-28T20:45:00Z",
+      "updatedAt": "2025-01-04T11:20:00Z"
+    },
+    {
+      "id": "5",
+      "title": "Book Notes: Atomic Habits",
+      "content": "Key takeaways from James Clear's 'Atomic Habits':\n\n**The Four Laws of Behavior Change:**\n1. Make it obvious (cue)\n2. Make it attractive (craving)\n3. Make it easy (response)\n4. Make it satisfying (reward)\n\n**Important Concepts:**\n- Identity-based habits vs outcome-based habits\n- The plateau of latent potential\n- Environment design for success\n- The two-minute rule for starting new habits\n\n**Personal Applications:**\n- Set up dedicated workspace for coding\n- Use habit stacking for daily routines\n- Focus on systems, not goals\n- Track progress visually\n\n**Quote:** 'You do not rise to the level of your goals. You fall to the level of your systems.'",
+      "tags": ["books", "habits", "productivity", "personal-development"],
+      "createdAt": "2024-12-30T19:15:00Z",
+      "updatedAt": "2025-01-02T14:40:00Z"
+    },
+    {
+      "id": "6",
+      "title": "Quick Thoughts",
+      "content": "Random ideas and thoughts:\n\n- The weather is perfect for a morning run today\n- Need to call mom this weekend\n- Interesting article about quantum computing in Nature\n- Coffee shop on 5th street has amazing pastries\n- Should probably backup my laptop soon",
+      "tags": ["random", "personal", "reminders"],
+      "createdAt": "2025-01-07T12:30:00Z",
+      "updatedAt": "2025-01-07T12:30:00Z"
+    }
+  ]
+}
