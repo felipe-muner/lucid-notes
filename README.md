@@ -125,14 +125,12 @@ lucid-notes/
 
 ### Manual Testing Checklist
 
-- [ ] CRUD operations work smoothly
-- [ ] Search and filtering functions correctly
-- [ ] AI features handle errors gracefully
-- [ ] Analytics display accurate data
-- [ ] Responsive design on mobile devices
-- [ ] Dark/light theme switching
-- [ ] Empty states and loading states
-- [ ] Keyboard navigation and accessibility
+- [x] CRUD operations work smoothly
+- [x] Search and filtering functions correctly
+- [x] AI features handle errors gracefully
+- [x] Analytics display accurate data
+- [x] Responsive design on mobile devices
+- [x] Dark/light theme switching
 
 ## 🔧 Available Scripts
 
@@ -153,6 +151,11 @@ pnpm lint                  # Run ESLint
 ### Live Demo
 
 🔗 **[Live Application](https://lucid-notes-mu.vercel.app/)**
+
+### List of browsers/devices you manually tested.
+
+- Chrome (latest)
+- Firefox (latest)
 
 ### Deploy to Vercel
 
