@@ -52,14 +52,14 @@ LucidNotes is a single-page web application that combines traditional note-takin
 ### Prerequisites
 
 - Node.js 18+
-- pnpm (recommended) or npm
+- pnpm
 
 ### Installation
 
 1. **Clone the repository**
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/felipe-muner/lucid-notes
 cd lucid-notes
 ```
 
@@ -139,7 +139,6 @@ lucid-notes/
 ```bash
 # Development
 pnpm dev                    # Start Next.js development server
-pnpm json-server           # Start mock API server
 
 # Production
 pnpm build                 # Build for production
@@ -147,14 +146,13 @@ pnpm start                 # Start production server
 
 # Utilities
 pnpm lint                  # Run ESLint
-pnpm type-check           # Run TypeScript check
 ```
 
 ## 🌐 Deployment
 
 ### Live Demo
 
-🔗 **[Live Application](your-deployment-url-here)**
+🔗 **[Live Application](https://lucid-notes-mu.vercel.app/)**
 
 ### Deploy to Vercel
 
@@ -174,7 +172,7 @@ See `estimates.csv` for detailed time estimates vs actual time spent on each fea
 
 ## 🎥 Demo Video
 
-📹 **[Feature Walkthrough](lucid-notes-mu.vercel.app)** - Complete demo showing all features, AI integration, and architecture overview.
+📹 **[Feature Walkthrough](VIDEO____)** - Complete demo showing all features, AI integration, and architecture overview.
 
 ## 📋 Trade-offs & Future Improvements
 
