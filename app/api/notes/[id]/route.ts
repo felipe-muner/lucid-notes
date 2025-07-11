@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Note, UpdateNoteRequest } from '@/types'
+import { UpdateNoteRequest } from '@/types'
+import { 
+  findNoteInStore, 
+  updateNoteInStore, 
+  deleteNoteFromStore, 
+  initializeStore 
+} from '@/lib/data-store'
 
-let notes: Note[] = []
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export async function GET(
@@ -10,13 +15,9 @@ export async function GET(
 ) {
   try {
     await delay(200)
+    await initializeStore()
     
-    if (notes.length === 0) {
-      const mockNotes = await import('@/db.json')
-      notes = mockNotes.notes as Note[]
-    }
-    
-    const note = notes.find(n => n.id === params.id)
+    const note = findNoteInStore(params.id)
     
     if (!note) {
       return NextResponse.json({ error: 'Note not found' }, { status: 404 })
@@ -34,25 +35,22 @@ export async function PUT(
 ) {
   try {
     await delay(400)
+    await initializeStore()
     
     const body: UpdateNoteRequest = await request.json()
-    const noteIndex = notes.findIndex(n => n.id === params.id)
-    
-    if (noteIndex === -1) {
-      return NextResponse.json({ error: 'Note not found' }, { status: 404 })
-    }
     
     if (body.tags && body.tags.length === 0) {
       return NextResponse.json({ error: 'At least one tag is required' }, { status: 400 })
     }
     
-    const updatedNote = {
-      ...notes[noteIndex],
+    const updatedNote = updateNoteInStore(params.id, {
       ...body,
       updatedAt: new Date().toISOString()
-    }
+    })
     
-    notes[noteIndex] = updatedNote
+    if (!updatedNote) {
+      return NextResponse.json({ error: 'Note not found' }, { status: 404 })
+    }
     
     return NextResponse.json({ note: updatedNote })
   } catch (error) {
@@ -66,15 +64,13 @@ export async function DELETE(
 ) {
   try {
     await delay(300)
+    await initializeStore()
     
-    const noteIndex = notes.findIndex(n => n.id === params.id)
+    const deletedNote = deleteNoteFromStore(params.id)
     
-    if (noteIndex === -1) {
+    if (!deletedNote) {
       return NextResponse.json({ error: 'Note not found' }, { status: 404 })
     }
-    
-    const deletedNote = notes[noteIndex]
-    notes.splice(noteIndex, 1)
     
     return NextResponse.json({ note: deletedNote })
   } catch (error) {

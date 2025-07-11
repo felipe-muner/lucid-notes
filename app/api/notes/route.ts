@@ -1,18 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Note, CreateNoteRequest } from '@/types'
+import { CreateNoteRequest } from '@/types'
+import { getNotesStore, addNoteToStore, initializeStore } from '@/lib/data-store'
 
-let notes: Note[] = []
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export async function GET() {
   try {
     await delay(300)
+    await initializeStore()
     
-    if (notes.length === 0) {
-      const mockNotes = await import('@/db.json')
-      notes = mockNotes.notes as Note[]
-    }
-    
+    const notes = getNotesStore()
     return NextResponse.json({ notes })
   } catch (error) {
     return NextResponse.json(
@@ -25,6 +22,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     await delay(500)
+    await initializeStore()
     
     const body: CreateNoteRequest = await request.json()
     
@@ -35,7 +33,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const newNote: Note = {
+    const newNote = {
       id: Date.now().toString(),
       title: body.title,
       content: body.content,
@@ -44,7 +42,7 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date().toISOString()
     }
 
-    notes.unshift(newNote)
+    addNoteToStore(newNote)
     
     return NextResponse.json({ note: newNote }, { status: 201 })
   } catch (error) {
