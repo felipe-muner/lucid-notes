@@ -12,6 +12,7 @@ export async function GET() {
     const notes = getNotesStore()
     return NextResponse.json({ notes })
   } catch (error) {
+    console.error('Failed to fetch notes:', error)
     return NextResponse.json(
       { error: 'Failed to fetch notes' },
       { status: 500 }
@@ -46,6 +47,7 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({ note: newNote }, { status: 201 })
   } catch (error) {
+    console.error('Failed to create note:', error)
     return NextResponse.json(
       { error: 'Failed to create note' },
       { status: 500 }
