@@ -1,0 +1,19 @@
+Task,Estimated Hours,Actual Hours,Status,Notes
+Project Setup & Dependencies,1.0,,Not Started,Next.js 15 + shadcn + dependencies
+Basic Project Structure,0.5,,Not Started,Types and folder organization
+Mock Database Setup,0.5,,Not Started,JSON Server + seed data
+Store Setup (Zustand),1.0,,Not Started,Notes and analytics state management
+Core UI Components,2.0,,Not Started,Note list + note editor + layout
+CRUD Operations,2.0,,Not Started,Create/Read/Update/Delete notes
+Tagging System,1.5,,Not Started,Add/remove tags + filtering
+Search Functionality,1.0,,Not Started,Text search across notes
+AI Integration - Summarization,2.0,,Not Started,OpenAI API + error handling
+AI Integration - Auto Title,1.0,,Not Started,Generate titles from content
+Analytics Dashboard,2.0,,Not Started,Charts + usage metrics
+Responsive Design,1.5,,Not Started,Mobile optimization
+Theme Toggle (Dark/Light),1.0,,Not Started,Theme switcher
+Error Handling & Loading States,1.0,,Not Started,Empty states + API failures
+Performance Optimization,1.0,,Not Started,Lighthouse optimization
+Deployment Setup,0.5,,Not Started,Vercel deployment
+Documentation & Demo Video,1.5,,Not Started,README + video recording
+Total,20.0,,Not Started,
