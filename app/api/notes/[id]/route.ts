@@ -11,13 +11,14 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await delay(200)
     await initializeStore()
 
-    const note = findNoteInStore(params.id)
+    const { id } = await params
+    const note = findNoteInStore(id)
 
     if (!note) {
       return NextResponse.json({ error: 'Note not found' }, { status: 404 })
@@ -32,19 +33,20 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await delay(400)
     await initializeStore()
 
+    const { id } = await params
     const body: UpdateNoteRequest = await request.json()
 
     if (body.tags && body.tags.length === 0) {
       return NextResponse.json({ error: 'At least one tag is required' }, { status: 400 })
     }
 
-    const updatedNote = updateNoteInStore(params.id, {
+    const updatedNote = updateNoteInStore(id, {
       ...body,
       updatedAt: new Date().toISOString()
     })
@@ -62,13 +64,14 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await delay(300)
     await initializeStore()
 
-    const deletedNote = deleteNoteFromStore(params.id)
+    const { id } = await params
+    const deletedNote = deleteNoteFromStore(id)
 
     if (!deletedNote) {
       return NextResponse.json({ error: 'Note not found' }, { status: 404 })
