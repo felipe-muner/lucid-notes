@@ -150,39 +150,9 @@ export function MainLayout() {
                     </div>
                   </div>
                 </Card>
-              </div>
+              </div>              
 
-              {/* Top Tags */}
-              <div>
-                <h4 className="font-medium text-sm mb-2">Most Used Tags</h4>
-                <div className="space-y-1">
-                  {analytics.tagPopularity.slice(0, 5).map((tag) => (
-                    <div key={tag.name} className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">{tag.name}</span>
-                      <span className="font-medium">{tag.count}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* AI Usage Breakdown */}
-              <div>
-                <h4 className="font-medium text-sm mb-2">AI Features</h4>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Summarize</span>
-                    <span className="font-medium">{analytics.aiFeatureUsage.summarize}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Auto Title</span>
-                    <span className="font-medium">{analytics.aiFeatureUsage.autoTitle}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Generate</span>
-                    <span className="font-medium">{analytics.aiFeatureUsage.generate}</span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           )}
         </div>

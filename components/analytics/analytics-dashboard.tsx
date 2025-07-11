@@ -1,6 +1,6 @@
 'use client'
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FileText, Brain, Tag } from 'lucide-react'
@@ -10,8 +10,17 @@ import { useAnalyticsStore } from '@/store/analytics'
 export function AnalyticsDashboard() {
   const { notes } = useNotesStore()
   const { getAnalyticsData } = useAnalyticsStore()
-  
+
   const analytics = getAnalyticsData(notes)
+
+  // Colors for the pie chart
+  const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#8dd1e1', '#d084d0', '#ffb347', '#87ceeb', '#dda0dd', '#98fb98']
+
+  // Prepare data for tag chart (top 8 tags for better visualization)
+  const tagChartData = analytics.tagPopularity.slice(0, 8).map((tag, index) => ({
+    ...tag,
+    fill: COLORS[index % COLORS.length]
+  }))
 
   return (
     <div className="space-y-6">
@@ -86,17 +95,32 @@ export function AnalyticsDashboard() {
         </Card>
       </div>
 
-      {/* Tag Popularity */}
-      <Card className="p-4">
-        <h3 className="text-lg font-semibold mb-4">Popular Tags</h3>
-        <div className="flex flex-wrap gap-2">
-          {analytics.tagPopularity.slice(0, 10).map((tag) => (
-            <Badge key={tag.name} variant="outline" className="text-sm">
-              {tag.name} ({tag.count})
-            </Badge>
-          ))}
-        </div>
-      </Card>
+      {/* Tag Popularity Chart */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Pie Chart */}
+        <Card className="p-4">
+          <h3 className="text-lg font-semibold mb-4">Tag Popularity</h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <PieChart>
+              <Pie
+                data={tagChartData}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
+                outerRadius={80}
+                fill="#8884d8"
+                dataKey="count"
+              >
+                {tagChartData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.fill} />
+                ))}
+              </Pie>
+              <Tooltip formatter={(value) => [`${value} notes`, 'Count']} />
+            </PieChart>
+          </ResponsiveContainer>
+        </Card>
+      </div>
     </div>
   )
 }
