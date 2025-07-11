@@ -174,7 +174,7 @@ See `estimates.csv` for detailed time estimates vs actual time spent on each fea
 
 ## 🎥 Demo Video
 
-📹 **[Feature Walkthrough](https://lucid-notes-git-main-felipe-muner.vercel.app/)** - Complete demo showing all features, AI integration, and architecture overview.
+📹 **[Feature Walkthrough](lucid-notes-mu.vercel.app)** - Complete demo showing all features, AI integration, and architecture overview.
 
 ## 📋 Trade-offs & Future Improvements
 
