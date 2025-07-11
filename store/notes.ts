@@ -2,14 +2,12 @@ import { create } from 'zustand'
 import { Note, CreateNoteRequest, UpdateNoteRequest, SearchFilters } from '@/types'
 
 interface NotesStore {
-  // State
   notes: Note[]
   isLoading: boolean
   error: string | null
   searchFilters: SearchFilters
   selectedNoteId: string | null
 
-  // Actions
   setNotes: (notes: Note[]) => void
   addNote: (note: Note) => void
   updateNote: (id: string, updates: UpdateNoteRequest) => void
@@ -19,14 +17,12 @@ interface NotesStore {
   setSearchFilters: (filters: Partial<SearchFilters>) => void
   setSelectedNoteId: (id: string | null) => void
 
-  // Computed
   getFilteredNotes: () => Note[]
   getAllTags: () => string[]
   getSelectedNote: () => Note | null
 }
 
 export const useNotesStore = create<NotesStore>((set, get) => ({
-  // Initial state
   notes: [],
   isLoading: false,
   error: null,
@@ -38,7 +34,6 @@ export const useNotesStore = create<NotesStore>((set, get) => ({
   },
   selectedNoteId: null,
 
-  // Actions
   setNotes: (notes) => set({ notes }),
   
   addNote: (note) => set((state) => ({ 
@@ -67,12 +62,10 @@ export const useNotesStore = create<NotesStore>((set, get) => ({
   
   setSelectedNoteId: (selectedNoteId) => set({ selectedNoteId }),
 
-  // Computed getters
   getFilteredNotes: () => {
     const { notes, searchFilters } = get()
     let filtered = [...notes]
 
-    // Filter by search query
     if (searchFilters.query) {
       const query = searchFilters.query.toLowerCase()
       filtered = filtered.filter(note => 
@@ -82,14 +75,12 @@ export const useNotesStore = create<NotesStore>((set, get) => ({
       )
     }
 
-    // Filter by tags
     if (searchFilters.tags.length > 0) {
       filtered = filtered.filter(note =>
         searchFilters.tags.every(tag => note.tags.includes(tag))
       )
     }
 
-    // Sort
     filtered.sort((a, b) => {
       const aVal = a[searchFilters.sortBy]
       const bVal = b[searchFilters.sortBy]

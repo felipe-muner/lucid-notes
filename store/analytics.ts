@@ -3,7 +3,6 @@ import { AnalyticsData, Note } from '@/types'
 import { startOfWeek, format, subDays, subWeeks } from 'date-fns'
 
 interface AnalyticsStore {
-  // State
   aiUsageCount: number
   aiFeatureUsage: {
     summarize: number
@@ -11,16 +10,12 @@ interface AnalyticsStore {
     generate: number
   }
 
-  // Actions
   incrementAIUsage: (feature: 'summarize' | 'autoTitle' | 'generate') => void
   resetAnalytics: () => void
-
-  // Computed
   getAnalyticsData: (notes: Note[]) => AnalyticsData
 }
 
 export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
-  // Initial state
   aiUsageCount: 0,
   aiFeatureUsage: {
     summarize: 0,
@@ -28,7 +23,6 @@ export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
     generate: 0
   },
 
-  // Actions
   incrementAIUsage: (feature) => set((state) => ({
     aiUsageCount: state.aiUsageCount + 1,
     aiFeatureUsage: {
@@ -46,14 +40,12 @@ export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
     }
   }),
 
-  // Computed analytics
   getAnalyticsData: (notes: Note[]): AnalyticsData => {
     const { aiUsageCount, aiFeatureUsage } = get()
     const now = new Date()
     const weekStart = startOfWeek(now)
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
 
-    // Notes this week/month
     const notesThisWeek = notes.filter(note => 
       new Date(note.createdAt) >= weekStart
     ).length
@@ -62,7 +54,6 @@ export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
       new Date(note.createdAt) >= monthStart
     ).length
 
-    // Daily note count for last 7 days
     const dailyNoteCount = []
     for (let i = 6; i >= 0; i--) {
       const date = subDays(now, i)
@@ -73,7 +64,6 @@ export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
       dailyNoteCount.push({ date: format(date, 'MMM dd'), count })
     }
 
-    // Weekly note count for last 4 weeks
     const weeklyNoteCount = []
     for (let i = 3; i >= 0; i--) {
       const weekStart = startOfWeek(subWeeks(now, i))
@@ -91,7 +81,6 @@ export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
       })
     }
 
-    // Tag popularity
     const tagCounts: { [key: string]: number } = {}
     notes.forEach(note => {
       note.tags.forEach(tag => {
@@ -102,7 +91,7 @@ export const useAnalyticsStore = create<AnalyticsStore>((set, get) => ({
     const tagPopularity = Object.entries(tagCounts)
       .map(([name, count]) => ({ name, count }))
       .sort((a, b) => b.count - a.count)
-      .slice(0, 10) // Top 10 tags
+      .slice(0, 10)
 
     return {
       totalNotes: notes.length,
