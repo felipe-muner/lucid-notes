@@ -20,7 +20,6 @@ export function MainLayout() {
   const { 
     searchFilters, 
     setSearchFilters, 
-    selectedNoteId,
     setSelectedNoteId,
     notes 
   } = useNotesStore()

@@ -1,6 +1,6 @@
 'use client'
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { FileText, Brain, Tag } from 'lucide-react'
@@ -12,8 +12,6 @@ export function AnalyticsDashboard() {
   const { getAnalyticsData } = useAnalyticsStore()
   
   const analytics = getAnalyticsData(notes)
-
-  const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#8dd1e1']
 
   return (
     <div className="space-y-6">
@@ -92,7 +90,7 @@ export function AnalyticsDashboard() {
       <Card className="p-4">
         <h3 className="text-lg font-semibold mb-4">Popular Tags</h3>
         <div className="flex flex-wrap gap-2">
-          {analytics.tagPopularity.slice(0, 10).map((tag, index) => (
+          {analytics.tagPopularity.slice(0, 10).map((tag) => (
             <Badge key={tag.name} variant="outline" className="text-sm">
               {tag.name} ({tag.count})
             </Badge>
