@@ -1,7 +1,5 @@
-import Image from "next/image";
+import { MainLayout } from '@/components/layout/main-layout'
 
 export default function Home() {
-  return (
-    <div>lucid notes</div>
-  );
+  return <MainLayout />
 }
