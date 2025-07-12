@@ -171,7 +171,7 @@ See `estimates.csv` for detailed time estimates vs actual time spent on each fea
 
 ## 🎥 Demo Video
 
-📹 **[Feature Walkthrough](VIDEO____)** - Complete demo showing all features, AI integration, and architecture overview.
+📹 **[Feature Walkthrough](https://www.loom.com/share/d10ccc6ce4fa41e98e5bce1f46a19ce1)** - Complete demo showing all features, AI integration, and architecture overview.
 
 ## 📋 Trade-offs & Future Improvements
 
