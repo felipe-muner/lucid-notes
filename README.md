@@ -84,10 +84,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 4. **Start the development servers**
 
 ```bash
-# Start the mock API server
-pnpm run json-server
-
-# In another terminal, start Next.js
 pnpm dev
 ```
 
