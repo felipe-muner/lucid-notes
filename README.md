@@ -84,10 +84,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 4. **Start the development servers**
 
 ```bash
-# Start the mock API server
-pnpm run json-server
-
-# In another terminal, start Next.js
 pnpm dev
 ```
 
@@ -175,7 +171,7 @@ See `estimates.csv` for detailed time estimates vs actual time spent on each fea
 
 ## 🎥 Demo Video
 
-📹 **[Feature Walkthrough](VIDEO____)** - Complete demo showing all features, AI integration, and architecture overview.
+📹 **[Feature Walkthrough](https://www.loom.com/share/d10ccc6ce4fa41e98e5bce1f46a19ce1)** - Complete demo showing all features, AI integration, and architecture overview.
 
 ## 📋 Trade-offs & Future Improvements
 
