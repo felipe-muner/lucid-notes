@@ -6,6 +6,11 @@
 
 LucidNotes is a single-page web application that combines traditional note-taking with AI-powered features. Built for a seed-stage ed-tech founder, this MVP demonstrates clean architecture, seamless AI integration, and polished user experience.
 
+## UI
+
+<img width="1512" height="829" alt="image" src="https://github.com/user-attachments/assets/746062b5-cdf8-44b3-be64-fca141d228ad" />
+<img width="499" height="829" alt="image" src="https://github.com/user-attachments/assets/ee73e307-0452-4a18-9fb7-3f8175160b4e" />
+
 ## ✨ Features
 
 ### Core Functionality
