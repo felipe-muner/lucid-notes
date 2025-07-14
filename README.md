@@ -126,6 +126,7 @@ lucid-notes/
 
 ### Manual Testing Checklist
 
+- [x] Shortcut keys - Save note (⌘/Ctrl + Enter to save)
 - [x] CRUD operations work smoothly
 - [x] Search and filtering functions correctly
 - [x] AI features handle errors gracefully
