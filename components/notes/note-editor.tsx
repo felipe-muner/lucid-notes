@@ -25,7 +25,7 @@ export function NoteEditor() {
 
   const selectedNote = getSelectedNote()
   const isNewNote = !selectedNoteId
-  
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [tags, setTags] = useState<string[]>([])
@@ -167,7 +167,7 @@ export function NoteEditor() {
       })
 
       const data = await response.json()
-      
+
       if (data.success) {
         incrementAIUsage(action)
         if (action === 'autoTitle') {
@@ -201,8 +201,23 @@ export function NoteEditor() {
     JSON.stringify(selectedNote.tags.sort()) !== JSON.stringify(tags.sort())
   )
 
-  const canSave = title.trim() && content.trim() && tags.length > 0 && 
+  const canSave = title.trim() && content.trim() && tags.length > 0 &&
     (isNewNote || hasChanges)
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Ctrl+Enter (Windows/Linux) or Cmd+Enter (Mac) to save
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        event.preventDefault()
+        if (canSave && !isSaving) {
+          handleSave()
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [title, content, tags, canSave, isSaving])
 
   if (!isNewNote && !selectedNote) {
     return (
@@ -249,6 +264,7 @@ export function NoteEditor() {
                 disabled={!canSave || isSaving}
                 size="sm"
                 className="h-8 lg:h-9"
+                title="Save note (⌘/Ctrl + Enter to save)"
               >
                 {isSaving ? (
                   <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -283,7 +299,7 @@ export function NoteEditor() {
               onChange={(e) => setTitle(e.target.value)}
               className="text-base lg:text-lg font-medium h-9 lg:h-10"
             />
-            
+
             <TagInput
               tags={tags}
               onChange={setTags}
@@ -358,7 +374,7 @@ export function NoteEditor() {
         {/* Content Editor */}
         <div className="flex-1 p-3 lg:p-4 min-h-0">
           <Textarea
-            placeholder="Start writing your note..."
+            placeholder="Start writing your note... (⌘/Ctrl + Enter to save)"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="h-full resize-none text-sm leading-relaxed"
